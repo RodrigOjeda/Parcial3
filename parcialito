@@ -1,0 +1,501 @@
+Aquí tenés todo el cuestionario consolidado en un único bloque de texto limpio en formato Markdown. Podés copiarlo por completo fácilmente para usarlo como guía de estudio o subirlo a tu repositorio:
+Markdown
+
+# Repositorio - Cuestionario Completo 3° Parcial (Programación I - TUP 2026)
+
+### Pregunta 1
+```c
+struct Alumno {
+    char nombre[50];
+    int edad;
+    float promedio;
+};
+
+    Respuesta correcta: Una estructura permite agrupar diferentes tipos de datos relacionados.
+
+Pregunta 2
+C
+
+void cuentaRegresiva(int n) {
+    if (n == 0) {
+        printf("¡Listo!\n");
+    } else {
+        printf("%d ", n);
+        cuentaRegresiva(n - 1);
+    }
+}
+
+    Respuesta correcta: 5 4 3 2 1 ¡Listo!
+
+Pregunta 3
+C
+
+struct Persona {
+    char nombre[50];
+    int edad;
+};
+
+    Respuesta correcta: Un tipo de dato que agrupa el nombre y la edad de una persona.
+
+Pregunta 4
+C
+
+int fibonacci(int n) {
+    if (n == 0) return 0;
+    if (n == 1) return 1;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+    Respuesta correcta: 0 1 1 2 3 5 8 13
+
+Pregunta 5
+C
+
+struct Nodo* insertar(struct Nodo* raiz, int valor) {
+    if (raiz == NULL) {
+        return crearNodo(valor);
+    }
+    if (valor < raiz->dato) {
+        raiz->izquierdo = insertar(raiz->izquierdo, valor);
+    } else if (valor > raiz->dato) {
+        raiz->derecho = insertar(raiz->derecho, valor);
+    }
+    return raiz;
+}
+
+    Respuestas correctas (Múltiple opción):
+
+        Si la raíz es NULL, crea un nuevo nodo y lo retorna.
+
+        Inserta los valores menores que la raíz en el subárbol izquierdo.
+
+Pregunta 6
+C
+
+struct Producto {
+    char nombre[50];
+    float precio;
+};
+struct Producto productos[3];
+// ¿Cómo se accede al precio del segundo producto?
+
+    Respuesta correcta: productos[1].precio
+
+Pregunta 7
+
+La profundidad de un árbol binario es la longitud del camino más largo desde la raíz hasta el nodo hoja más alejado. Se calcula contando el número de nodos en esa ruta. Si el árbol está vacío, la profundidad es 0.
+
+    Respuesta correcta: Verdadero
+
+Pregunta 8
+
+Indicar a qué concepto corresponde cada proposición (Iteración vs. Recursión):
+
+    Utiliza la misma memoria asignada, modificando variables existentes. -> Iteración
+
+    Condición de parada: Definida por la condición del bucle. Si no se cumple, se genera un bucle infinito. -> Iteración
+
+    Utiliza estructuras condicionales (if-else) para detenerse. -> Recursión
+
+    Utiliza estructuras cíclicas (for, while, do-while). -> Iteración
+
+    Condición de parada: Definida por el caso base. Si no se alcanza, ocurre un desbordamiento. -> Recursión
+
+    Alto. Consume memoria de la pila (stack) por cada llamada a la función. -> Recursión
+
+Pregunta 9
+C
+
+if (arr[medio] == buscado) {
+    return medio;
+} else if (arr[medio] < buscado) {
+    ____________; // ¿Qué asignación va aquí?
+} else {
+    fin = medio - 1;
+}
+
+    Respuesta correcta: inicio = medio + 1;
+
+Pregunta 10
+
+Dado un fragmento de código de búsqueda estándar:
+
+    Respuestas correctas (Múltiple opción):
+
+        Busca el valor en todos los nodos hasta encontrarlo.
+
+        Si encuentra el valor, lo imprime y termina la búsqueda.
+
+Pregunta 11
+C
+
+if (arr[j] > arr[j + 1]) {
+    temp = arr[j];
+    arr[j] = arr[j + 1];
+    arr[j + 1] = temp;
+}
+
+    Respuestas correctas (Múltiple opción):
+
+        temp = arr[j];
+
+        arr[j] = arr[j + 1];
+
+Pregunta 12
+
+En la traza de memoria de una función recursiva en C, ¿dónde se almacenan las variables locales y parámetros de cada llamada activa?
+
+    Respuesta correcta: En la pila de llamadas (Call Stack), dentro de un marco de pila (Stack Frame).
+
+Pregunta 13
+C
+
+struct Nodo* crearNodo(int valor) {
+    struct Nodo* nuevo = (struct Nodo*) malloc(sizeof(struct Nodo));
+    nuevo->dato = valor;
+    nuevo->siguiente = NULL;
+    return nuevo;
+}
+
+    Propiedades: Usa malloc para reservar memoria dinámica, asigna el valor recibido al campo dato, el siguiente es NULL porque aún no se conecta a ningún nodo, devuelve el puntero al nuevo nodo.
+
+    Respuesta correcta: Verdadero
+
+Pregunta 14
+
+Un árbol binario de búsqueda es aquel que tiene sus nodos con un orden definido, de tal manera que los datos del subárbol izquierdo son menores y los del subárbol derecho son mayores. Estos árboles tienen como particularidad de que se puedan realizar búsquedas de nodos o datos determinados, utilizando el método de búsqueda binaria de manera similar al usado en arreglos.  
+
+    Respuesta correcta: Verdadero
+
+Pregunta 15
+C
+
+void bubbleSort(int arr[], int n) {
+    int i, j, temp;
+    for (i = 0; i < n - 1; i++) {
+        for (j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+
+    Respuestas correctas (Múltiple opción):
+
+        En cada pasada del ciclo externo, el número más grande entre los restantes se ubica al final del arreglo.
+
+        El algoritmo ordena correctamente cualquier arreglo de enteros sin importar su longitud.
+
+Pregunta 16
+
+Las ESTRUCTURAS DE DATOS DINÁMICAS son aquellas en las que el tamaño podrá modificarse durante la ejecución del programa; teóricamente no hay límites a su tamaño, salvo el que impone la memoria disponible en la computadora.  
+
+    Respuesta correcta: Verdadero
+
+Pregunta 17
+C
+
+void duplicar(int* x) {
+    *x = *x * 2;
+}
+int main() {
+    int n = 5;
+    duplicar(&n);
+    printf("%d", n);
+    return 0;
+}
+
+    Respuesta correcta: Se imprimirá 10 porque se modificó el valor original a través de su dirección.
+
+Pregunta 18
+
+Dada la definición de nodo en una lista enlazada simple, ¿cuál es la condición en C para determinar que un nodo actual es el último nodo de la lista?
+
+    Respuesta correcta: actual->siguiente == NULL
+
+Pregunta 19
+
+Indicar si las siguientes proposiciones sobre árboles y estructuras son verdaderas o falsas:
+
+    Se llaman estructuras dinámicas, porque las mismas no pueden cambiar tanto de forma como de tamaño durante la ejecución del programa. -> Falso
+
+    Los hijos son todos aquellos nodos que tienen un padre. -> Verdadero
+
+    Se le llama nodo a cada elemento que contiene el árbol. -> Verdadero
+
+    Nodo Interior o Rama: Estos son todos aquellos nodos que no son la raíz y que además tienen al menos un hijo. -> Verdadero
+
+Pregunta 20
+
+En C, ¿cuál es el peligro principal de una función recursiva que carece de caso base o cuyo paso recursivo no se acerca al caso base?
+
+    Respuesta correcta: Provoca un desbordamiento de pila (Stack Overflow) en tiempo de ejecución.
+
+Pregunta 21
+
+Dado un fragmento de código de eliminación de un nodo:
+
+    Respuesta correcta: Se elimina correctamente el nodo con valor 20, aunque esté al inicio.
+
+Pregunta 22
+C
+
+struct Nodo* buscar(struct Nodo* raiz, int valorBuscado) {
+    if (raiz == NULL || raiz->dato == valorBuscado) {
+        return raiz;
+    }
+    if (valorBuscado < raiz->dato) {
+        return buscar(raiz->izquierdo, valorBuscado);
+    }
+    return buscar(raiz->derecho, valorBuscado);
+}
+
+Dada la función recursiva de búsqueda en un BST, ¿cuál es el caso base que determina que el valor buscado NO se encuentra en el árbol?
+
+    Respuesta correcta: raiz == NULL
+
+Pregunta 23
+
+Cuando un árbol binario de búsqueda crece descontroladamente hacia un extremo su rendimiento se mantiene estable.
+
+    Respuesta correcta: Falso
+
+Pregunta 24
+C
+
+void inorden(struct Nodo* raiz) {
+    if (raiz != NULL) {
+        inorden(raiz->izquierdo);
+        printf("%d ", raiz->dato);
+        inorden(raiz->derecho);
+    }
+}
+
+    Respuestas correctas (Múltiple opción):
+
+        Realiza un recorrido donde primero va a la izquierda, luego al nodo y luego a la derecha.
+
+        Es un recorrido típico para mostrar los valores ordenados de menor a mayor.
+
+Pregunta 25
+C
+
+void duplicar(int* x) {
+    *x = *x * 2;
+}
+
+    Respuesta correcta: Duplica el valor de la variable original usando su dirección.
+
+Pregunta 26
+C
+
+char nombreBuscado[50];
+printf("Ingrese nombre a buscar: ");
+scanf("%s", nombreBuscado);
+for (int i = 0; i < 3; i++) {
+    if (strcmp(grupo[i].nombre, nombreBuscado) == 0) {
+        printf("Encontrado! Edad: %d\n", grupo[i].edad);
+    }
+}
+
+    Respuesta correcta: Compara si el nombre ingresado por el usuario coincide con alguno de los guardados en el arreglo.
+
+Pregunta 27
+C
+
+int inicio = 0;
+int fin = tam - 1;
+while (inicio <= fin) {
+    int medio = ____________; // ¿Qué expresión va aquí?
+    if (arr[medio] == buscado) return medio;
+    ...
+}
+
+    Respuesta correcta: medio = (inicio + fin) / 2;
+
+Pregunta 28
+C
+
+int factorial(int n) {
+    if (n == 1) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    }
+}
+
+Dada la función factorial en C, ¿cuál es el resultado de la llamada de ejecución de factorial(4)?
+
+    Respuesta correcta: 24
+
+Pregunta 29
+C
+
+void bubbleSort(int arr[], int n) {
+    int i, j, temp;
+    for (i = 0; i < n - 1; i++) {
+        for (j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+
+    Respuestas correctas (Múltiple opción):
+
+        El bucle más interno compara elementos consecutivos.
+
+        El bucle externo garantiza que se hagan suficientes pasadas.
+
+Pregunta 30
+
+El nivel de un nodo es su distancia a la raíz. Por lo tanto:
+
+    Un árbol vacío tiene 0 niveles.
+
+    El nivel de la raíz es 0 o 1 dependiendo del valor con se inicie el nodo raíz.
+
+    El nivel de cada nodo se calcula contando cuántos nodos existen sobre él, hasta llegar a la raíz + 1 (y de forma inversa igual).
+
+    Respuesta correcta: Verdadero
+
+Pregunta 31
+C
+
+void mostrarLista(struct Nodo* cabeza) {
+    if (cabeza == NULL) {
+        printf("La lista está vacía\n");
+        return;
+    }
+    struct Nodo* actual = cabeza;
+    while (actual != NULL) {
+        printf("%d ", actual->dato);
+        actual = actual->siguiente;
+    }
+}
+
+    Respuestas correctas (Múltiple opción):
+
+        Recorre toda la lista y muestra sus valores.
+
+        Si la lista está vacía, imprime un mensaje especial.
+
+Pregunta 32
+C
+
+void insertarInicio(struct Nodo** cabeza, int valor) {
+    struct Nodo* nuevo = crearNodo(valor);
+    nuevo->siguiente = *cabeza;
+    *cabeza = nuevo;
+}
+
+    Respuestas correctas (Múltiple opción):
+
+        Inserta un nuevo nodo al principio de la lista.
+
+        El puntero cabeza se actualiza para apuntar al nuevo nodo.
+
+Pregunta 33
+C
+
+struct Persona grupo[3];
+for (int i = 0; i < 3; i++) {
+    printf("Ingrese nombre: ");
+    scanf("%s", grupo[i].nombre);
+    printf("Ingrese edad: ");
+    scanf("%d", &grupo[i].edad);
+}
+
+    Respuesta correcta: Repite 3 veces para cargar nombre y edad de distintas personas en un arreglo de estructuras.
+
+Pregunta 34
+C
+
+int buscar(struct Nodo* cabeza, int valor) {
+    struct Nodo* actual = cabeza;
+    while (actual != NULL) {
+        if (actual->dato == valor) {
+            return 1;
+        }
+        actual = actual->siguiente;
+    }
+    return 0;
+}
+
+    Respuesta correcta: Devuelve 1 si encuentra el valor en la lista.
+
+Pregunta 35
+
+En el lenguaje C, ¿cómo se representa conceptualmente un procedimiento (un subprograma que realiza una acción pero no retorna un valor)?
+
+    Respuesta correcta: Como una función con tipo de retorno void.
+
+Pregunta 36
+
+Dado un fragmento de código condicional para evaluar una operación:
+
+    Respuesta correcta: Si
+
+Pregunta 37
+
+La principal diferencia entre recursión e iteración radica en su estructura de control: la recursión ejecuta un bloque de código llamándose a sí misma de forma repetida hasta cumplir una condición, mientras que la iteración utiliza estructuras cíclicas explícitas (como bucles for o while) para repetir un proceso.
+
+    Respuesta correcta: Verdadero
+
+Pregunta 38
+C
+
+insertarAlInicio(&cabeza, 10);
+insertarAlInicio(&cabeza, 20);
+
+    Respuesta correcta: Inserta los elementos al inicio, quedando: 20 -> 10
+
+Pregunta 39
+C
+
+struct Producto productos[3];
+
+    Respuesta correcta: Un arreglo de 3 estructuras de tipo Producto.
+
+Pregunta 40
+
+Dado un fragmento de código de borrado en listas enlazadas:
+
+    Respuestas correctas (Múltiple opción):
+
+        Elimina el primer nodo que contiene el valor dado.
+
+        Si el nodo está al inicio, la cabeza se actualiza.
+
+Pregunta 41
+
+¿Qué propiedad caracteriza a un Recorrido Inorden (In-order) en un Árbol Binario de Búsqueda (BST)?
+
+    Respuesta correcta: Permite visitar y mostrar los elementos ordenados de menor a mayor.
+
+Pregunta 42
+
+Las estructuras de datos lineales son aquellas en las que los elementos ocupan lugares sucesivos en la estructura y cada uno de ellos tiene un único sucesor y un único predecesor, es decir, sus elementos están ubicados uno al lado del otro relacionados en forma lineal.  
+
+    Respuesta correcta: Verdadero
+
+Pregunta 43
+C
+
+void duplicar(int x) {
+    x = x * 2;
+}
+int main() {
+    int n = 5;
+    duplicar(n);
+    printf("Fuera de la función: %d", n);
+    return 0;
+}
+
+    Respuesta correcta: Se imprimirá Fuera de la función: 5 porque la función recibe una copia del valor y no modifica el original.
