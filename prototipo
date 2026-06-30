@@ -15,7 +15,56 @@ void listarClientesConSaldoMayorA(struct Cliente clientes[], int cantidad, float
     }
 }
 
+void transferirSaldo(struct Cliente clientes[], int cantidad, int dniOrigen, int dniDestino, float monto)
+{
+    int indexOrigen = -1;
+    int indexDestino = -1;
 
+    for (int i = 0; i < cantidad; i++)
+    {
+        if (clientes[i].dni == dniOrigen)
+        {
+            indexOrigen = i;
+        }
+        if (clientes[i].dni == dniDestino)
+        {
+            indexDestino = i;
+        }
+    }
+
+    if (indexOrigen == -1)
+    {
+        printf("Error: El cliente origen con DNI %d no existe.\n", dniOrigen);
+        return;
+    }
+    if (indexDestino == -1)
+    {
+        printf("Error: El cliente destino con DNI %d no existe.\n", dniDestino);
+        return;
+    }
+
+    if (clientes[indexOrigen].habilitado != 1)
+    {
+        printf("Error: El cliente origen con DNI %d se encuentra deshabilitado.\n", dniOrigen);
+        return;
+    }
+    if (clientes[indexDestino].habilitado != 1)
+    {
+        printf("Error: El cliente destino con DNI %d se encuentra deshabilitado.\n", dniDestino);
+        return;
+    }
+
+    if (clientes[indexOrigen].saldo < monto)
+    {
+        printf("Saldo insuficiente para realizar la transferencia.\n");
+        return;
+    }
+
+    clientes[indexOrigen].saldo -= monto;
+    clientes[indexDestino].saldo += monto;
+
+    printf("Transferencia exitosa: Se han transferido %.2f desde el DNI %d al DNI %d.\n", monto, dniOrigen, dniDestino);
+}
 
 
 
