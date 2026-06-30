@@ -1,0 +1,23 @@
+void listarClientesConSaldoMayorA(struct Cliente clientes[], int cantidad, float montoMinimo)
+{
+    int encontrados = 0;
+    for (int i = 0; i < cantidad; i++)
+    {
+        if (clientes[i].saldo > montoMinimo)
+        {
+            printf("DNI: %d, Nombre: %s %s, Saldo: %.2f\n", clientes[i].dni, clientes[i].nombre, clientes[i].apellido, clientes[i].saldo);
+            encontrados++;
+        }
+    }
+    if (encontrados == 0)
+    {
+        printf("No hay clientes con saldo mayor a %.2f.\n", montoMinimo);
+    }
+}
+
+
+
+
+
+
+
