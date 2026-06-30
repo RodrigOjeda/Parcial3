@@ -1,0 +1,108 @@
+===========================================================================
+               GUÍA DE DIAGNÓSTICO RÁPIDO - PROGRA RECU 2
+===========================================================================
+
+Esta guía te ayudará a identificar instantáneamente qué algoritmo o función 
+copiar y pegar de tu repositorio según las palabras clave del enunciado.
+
+---------------------------------------------------------------------------
+1. MAPA DE DECISIÓN: ¿QUÉ FUNCIÓN DEBO USAR?
+---------------------------------------------------------------------------
+
+Mirá las acciones que te pide el enunciado y buscá su equivalencia directa:
+
++----------------------------+-------------------------+------------------+
+| Si el enunciado dice...    | Función a usar...       | Tipo de Pasaje   |
++----------------------------+-------------------------+------------------+
+| "Cargar", "Registrar",     | Altas (Create)          | Por Referencia   |
+| "Ingresar nuevo"           |                         | (int *n)         |
++----------------------------+-------------------------+------------------+
+| "Listar", "Mostrar",       | Listados (Read)         | Por Valor        |
+| "Emitir reporte"           |                         | (int n)          |
++----------------------------+-------------------------+------------------+
+| "Ordenar", "Clasificar",   | Burbuja (Update)        | Por Valor        |
+| "Disponer por"             |                         | (int n)          |
++----------------------------+-------------------------+------------------+
+| "Buscar", "Localizar",     | Búsqueda Binaria        | Por Valor        |
+| "Consultar"                |                         | (int n)          |
++----------------------------+-------------------------+------------------+
+| "Eliminar", "Dar de baja", | Bajas (Delete)          | Depende el tipo  |
+| "Sacar"                    |                         | (Ver abajo)      |
++----------------------------+-------------------------+------------------+
+
+* Pasaje por Referencia (int *n): OBLIGATORIO cuando la función altera la 
+  cantidad total de elementos en el main (Altas o Bajas Físicas). Lleva (*n)++.
+* Pasaje por Valor (int n): Se usa cuando la función solo lee, muestra u 
+  ordena posiciones sin cambiar la cantidad total de registros.
+
+---------------------------------------------------------------------------
+2. GUÍA DE VARIANTES MECÁNICAS (Qué tener listo en el repositorio)
+---------------------------------------------------------------------------
+
+### VARIANTES DE ORDENAMIENTO (Método de la Burbuja)
+Tené preparadas las tres versiones del bucle "if" de intercambio:
+
+* Opción A: Ascendente (Menor a Mayor) por ID/Número numérico
+  if (arr[j].id > arr[j + 1].id)
+
+* Opción B: Descendente (Mayor a Menor) por ID/Número numérico
+  if (arr[j].id < arr[j + 1].id)
+
+* Opción C: Alfabético Ascendente (Por Cadenas de Texto)
+  ¡Ojo! No usar '<' ni '>'. Requiere la librería <string.h> y strcmp:
+  if (strcmp(arr[j].nombre, arr[j + 1].nombre) > 0)
+
+### VARIANTES DE BÚSQUEDA BINARIA
+REGLA DE ORO: El vector debe estar ordenado previamente con la función de 
+burbuja correspondiente antes de llamar a la búsqueda binaria.
+
+* Opción A: En Vector Ordenado Ascendentemente
+  Si el dato del medio es menor al buscado, nos movemos a la derecha:
+  if (arr[medio].id < idBuscado) {
+      inicio = medio + 1;
+  } else {
+      fin = medio - 1;
+  }
+
+* Opción B: En Vector Ordenado Descendentemente
+  Los reajustes de límites cambian en espejo (invertidos):
+  if (arr[medio].id < idBuscado) {
+      fin = medio - 1;  // Lo buscado está hacia la izquierda (zonas mayores)
+  } else {
+      inicio = medio + 1; // Lo buscado está hacia la derecha (zonas menores)
+  }
+
+### VARIANTES DE ELIMINACIÓN (El "Delete")
+* Opción A: Baja Lógica (Manejo por campo bandera)
+  Recomendado si la estructura tiene un campo estado (ej: activo, habilitado).
+  No altera el tamaño físico del vector ni toca el contador "n". Solo hace:
+  arr[posicion].activo = 0;
+
+* Opción B: Baja Física (Por desplazamiento)
+  Si te exigen borrarlo definitivamente. Usa un bucle "for" desde la posición 
+  encontrada para pisar los datos de derecha a izquierda y decrementa "n":
+  for (int j = posicion; j < *n - 1; j++) {
+      arr[j] = arr[j + 1];
+  }
+  (*n)--;
+
+---------------------------------------------------------------------------
+3. CHECKLIST DE VARIABLES (Qué cambiar antes de compilar)
+---------------------------------------------------------------------------
+
+Cuando copies un código genérico de tu repositorio para resolver el caso 
+específico del examen (Alumnos, Clientes, Productos, Piezas), revisá este 
+orden estricto de arriba a abajo:
+
+1. El nombre del Struct: Cambiá "struct Elemento" por el que pida el parcial.
+2. El Criterio de Comparación: Si tu plantilla busca o compara por ".id", 
+   reemplazalo por el campo clave del examen (ej: ".dni", ".nroProducto", 
+   ".saldo", etc.).
+3. Especificadores de Formato (%d, %f, %s): 
+   * %d para campos enteros (id, dni, legajo).
+   * %f para campos flotantes (precio, saldo, nota).
+   * %s o %[^\n] para cadenas de texto (nombre, apellido, tipo).
+4. El Ampersand (&) en los scanf: 
+   * SÍ lo llevan las variables numéricas simples (&arr[*n].id, &arr[*n].valor).
+   * NO lo llevan los arreglos de caracteres/texto (arr[*n].nombre).
+===========================================================================
