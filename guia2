@@ -1,0 +1,12 @@
+---------------------------------------------------------------------------
+7. FUNCIÓN DE INICIALIZACIÓN (Obligatoria al arrancar el main)
+---------------------------------------------------------------------------
+Coloca el marcador de estado en 0 (vacío/inactivo) para todo el vector.
+Evita que el programa lea "basura" de la memoria antes de cargar los datos.
+
+void inicializarArreglo(struct Elemento arr[], int max_capacidad) {
+    for (int i = 0; i < max_capacidad; i++) {
+        arr[i].activo = 0; // <-- TUNEAR: .activo o .habilitado según el parcial
+    }
+    printf("Sistema inicializado correctamente.\n");
+}
